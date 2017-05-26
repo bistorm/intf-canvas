@@ -7,6 +7,9 @@ function icanvas_draw_rectangle(id_canvas, x, y, width, height, fill_style, stro
 	var ctx = canvas.getContext("2d");
 	ctx.beginPath(); 	
 	ctx.rect(x,y,width,height);
+
+	stroke_style = stroke_style || "#000";
+	line_width = line_width || "1";
 	
 	if(fill_style != null && fill_style != undefined)
 	{
@@ -14,24 +17,11 @@ function icanvas_draw_rectangle(id_canvas, x, y, width, height, fill_style, stro
 		ctx.fill();	
 	}
 
-	if(stroke_style != null && stroke_style != undefined)
-	{
-		ctx.strokeStyle = stroke_style;
-	}
-	else
-	{
-		ctx.strokeStyle = "#FFF";
-	}	
-
+	ctx.strokeStyle = stroke_style;
+	
 	if (line_width!=0)
 	{
-		if(line_width === null || line_width === undefined)
-		{
-			ctx.lineWidth="1";
-		}
-		else{
-			ctx.lineWidth=line_width;
-		}
+		ctx.lineWidth=line_width;
 		ctx.stroke();
 	}
 	
